@@ -1,0 +1,23 @@
+{
+  "name": "loadshit-desktop",
+  "version": "1.0.0",
+  "description": "Free & Open Source Video Downloader",
+  "type": "module",
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.0.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0"
+  },
+  "author": "LoadSh.it Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aimtaim/loadshit-desktop"
+  }
+}

@@ -1,0 +1,105 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: ubuntu-22.04
+            target: x86_64-unknown-linux-gnu
+          - platform: windows-latest
+            target: x86_64-pc-windows-msvc
+          - platform: macos-latest
+            target: aarch64-apple-darwin
+          - platform: macos-latest
+            target: x86_64-apple-darwin
+
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - name: Install dependencies (Ubuntu)
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.1-dev librsvg2-dev
+
+      - name: Install Node dependencies
+        run: npm install
+
+      - name: Build Tauri App
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: 'LoadSh.it Desktop ${{ github.ref_name }}'
+          releaseBody: |
+            ## Download
+
+            Wähle die passende Version für dein Betriebssystem:
+
+            | Platform | Datei |
+            |----------|-------|
+            | Windows | `.msi` oder `.exe` |
+            | macOS | `.dmg` |
+            | Linux | `.AppImage` oder `.deb` |
+
+            ## Voraussetzungen
+
+            - **yt-dlp** muss installiert sein: https://github.com/yt-dlp/yt-dlp#installation
+            - **ffmpeg** wird für manche Formate benötigt
+
+            ## Installation
+
+            ### Windows
+            ```powershell
+            winget install yt-dlp
+            ```
+
+            ### macOS
+            ```bash
+            brew install yt-dlp ffmpeg
+            ```
+
+            ### Linux
+            ```bash
+            pip install yt-dlp
+            sudo apt install ffmpeg
+            ```
+          releaseDraft: false
+          prerelease: false
+          args: --target ${{ matrix.target }}
+
+  create-universal-macos:
+    needs: build
+    runs-on: macos-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Create universal binary
+        run: |
+          echo "Universal binary creation would go here"
+          # This is a placeholder - real implementation would merge arm64 and x86_64

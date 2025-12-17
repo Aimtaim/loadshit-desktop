@@ -1,0 +1,465 @@
+/* LoadSh.it Desktop - Neobrutalist Design */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #00ff88;
+  --primary-dark: #00cc6a;
+  --secondary: #1ac2ff;
+  --bg-dark: #0a0a0a;
+  --bg-card: #1e1e1e;
+  --text-light: #ffffff;
+  --text-muted: #888888;
+  --border-color: #000000;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.app-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-icon {
+  font-size: 2rem;
+}
+
+.app-header h1 {
+  font-size: 1.75rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.version-badge {
+  background: var(--primary);
+  color: #000;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Downloader Card */
+.downloader-card {
+  background: var(--bg-card);
+  border: 4px solid var(--primary);
+  padding: 2rem;
+  box-shadow: 8px 8px 0 var(--primary);
+  flex: 1;
+}
+
+/* Input */
+.input-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.brutalist-input {
+  width: 100%;
+  padding: 1rem;
+  padding-right: 3.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  background: #fff;
+  color: #000;
+  border: 4px solid #000;
+  box-shadow: 4px 4px 0 #000;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.brutalist-input:focus {
+  outline: none;
+  box-shadow: 4px 4px 0 var(--primary);
+}
+
+.brutalist-input::placeholder {
+  color: #666;
+  font-weight: 600;
+}
+
+.paste-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #eee;
+  border: 2px solid #000;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.paste-btn:hover {
+  background: var(--primary);
+}
+
+/* Video Info Preview */
+.video-info {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: #000;
+  border: 2px solid #333;
+  margin-bottom: 1rem;
+}
+
+.video-info.hidden {
+  display: none;
+}
+
+.video-info img {
+  width: 120px;
+  height: 68px;
+  object-fit: cover;
+  border: 2px solid #444;
+  background: #222;
+}
+
+.video-meta {
+  flex: 1;
+  overflow: hidden;
+}
+
+.video-meta h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.video-meta p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.video-meta .duration {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Options Row */
+.options-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.select-wrapper {
+  flex: 1;
+}
+
+.select-wrapper label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+
+.brutalist-select {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  background: #4ade80;
+  color: #000;
+  border: 3px solid #000;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23000' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.brutalist-select:hover {
+  background-color: #22c55e;
+}
+
+/* Button */
+.brutalist-btn {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: var(--primary);
+  color: #000;
+  border: 4px solid #000;
+  box-shadow: 6px 6px 0 #000;
+  cursor: pointer;
+  transition: all 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.brutalist-btn:hover:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0 #000;
+}
+
+.brutalist-btn:active:not(:disabled) {
+  transform: translate(6px, 6px);
+  box-shadow: 0 0 0 #000;
+}
+
+.brutalist-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-icon {
+  font-size: 1.25rem;
+}
+
+/* Progress Section */
+.progress-section {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: #000;
+  border: 3px solid var(--primary);
+  animation: slideIn 0.3s ease-out;
+}
+
+.progress-section.hidden {
+  display: none;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.status-badge {
+  background: var(--warning);
+  color: #000;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.status-badge.downloading {
+  background: var(--secondary);
+}
+
+.status-badge.merging {
+  background: #a855f7;
+  color: #fff;
+}
+
+.status-badge.completed {
+  background: var(--success);
+}
+
+.status-badge.failed {
+  background: var(--danger);
+  color: #fff;
+}
+
+.progress-percent {
+  font-size: 1.25rem;
+  font-weight: 900;
+  font-family: 'Courier New', monospace;
+  color: var(--primary);
+}
+
+.progress-bar {
+  height: 14px;
+  background: #333;
+  border: 2px solid #444;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  width: 0%;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 12px var(--primary);
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+}
+
+/* Error Section */
+.error-section {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 3px solid var(--danger);
+}
+
+.error-section.hidden {
+  display: none;
+}
+
+.error-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: var(--danger);
+  margin-bottom: 0.5rem;
+}
+
+.error-section p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.dismiss-btn {
+  background: var(--danger);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Success Section */
+.success-section {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(34, 197, 94, 0.1);
+  border: 3px solid var(--success);
+  text-align: center;
+}
+
+.success-section.hidden {
+  display: none;
+}
+
+.success-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.success-section p {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.open-folder-btn {
+  background: var(--success);
+  color: #000;
+  border: 3px solid #000;
+  padding: 0.75rem 1.5rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.open-folder-btn:hover {
+  background: #16a34a;
+}
+
+/* Footer */
+.app-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.app-footer a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.app-footer a:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+.separator {
+  margin: 0 0.5rem;
+}
+
+.legal {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 1rem;
+  }
+
+  .downloader-card {
+    padding: 1.25rem;
+    box-shadow: 4px 4px 0 var(--primary);
+  }
+
+  .options-row {
+    flex-direction: column;
+  }
+
+  .brutalist-btn {
+    padding: 0.875rem;
+    font-size: 1rem;
+  }
+}

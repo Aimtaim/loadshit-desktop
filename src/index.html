@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoadSh.it Desktop</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="logo-section">
+        <span class="logo-icon">🍩</span>
+        <h1>LoadSh.it</h1>
+      </div>
+      <span class="version-badge">Desktop v1.0</span>
+    </header>
+
+    <main class="downloader-card">
+      <form id="downloadForm">
+        <div class="input-wrapper">
+          <input
+            type="url"
+            id="videoUrl"
+            class="brutalist-input"
+            placeholder="VIDEO URL EINFÜGEN"
+            required
+            autocomplete="off"
+          />
+          <button type="button" id="pasteBtn" class="paste-btn" title="Einfügen">
+            📋
+          </button>
+        </div>
+
+        <!-- Video Info Preview -->
+        <div id="videoInfo" class="video-info hidden">
+          <img id="videoThumbnail" src="" alt="Thumbnail" />
+          <div class="video-meta">
+            <h3 id="videoTitle">Video Titel</h3>
+            <p id="videoChannel">Kanal</p>
+            <p id="videoDuration" class="duration"></p>
+          </div>
+        </div>
+
+        <div class="options-row">
+          <div class="select-wrapper">
+            <label for="formatSelect">Format</label>
+            <select id="formatSelect" class="brutalist-select">
+              <optgroup label="Video">
+                <option value="mp4" selected>MP4</option>
+                <option value="webm">WebM</option>
+                <option value="mkv">MKV</option>
+                <option value="avi">AVI</option>
+              </optgroup>
+              <optgroup label="Audio">
+                <option value="mp3">MP3</option>
+                <option value="aac">AAC</option>
+                <option value="wav">WAV</option>
+                <option value="flac">FLAC</option>
+                <option value="ogg">OGG</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="select-wrapper">
+            <label for="qualitySelect">Qualität</label>
+            <select id="qualitySelect" class="brutalist-select">
+              <option value="360p">360p</option>
+              <option value="480p">480p</option>
+              <option value="720p">720p</option>
+              <option value="1080p" selected>1080p</option>
+              <option value="1440p">1440p (2K)</option>
+              <option value="2160p">2160p (4K)</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" id="downloadBtn" class="brutalist-btn">
+          <span class="btn-icon">⬇️</span>
+          <span class="btn-text">DOWNLOAD STARTEN</span>
+        </button>
+      </form>
+
+      <!-- Progress Section -->
+      <div id="progressSection" class="progress-section hidden">
+        <div class="progress-header">
+          <span id="progressStatus" class="status-badge">Starte...</span>
+          <span id="progressPercent" class="progress-percent">0%</span>
+        </div>
+        <div class="progress-bar">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <div class="progress-info">
+          <span id="progressSpeed">-- /s</span>
+          <span id="progressEta">ETA: --:--</span>
+        </div>
+      </div>
+
+      <!-- Error Section -->
+      <div id="errorSection" class="error-section hidden">
+        <div class="error-header">
+          <span>❌</span>
+          <span>Fehler</span>
+        </div>
+        <p id="errorMessage"></p>
+        <button type="button" id="errorDismiss" class="dismiss-btn">Schließen</button>
+      </div>
+
+      <!-- Success Section -->
+      <div id="successSection" class="success-section hidden">
+        <div class="success-icon">✅</div>
+        <p>Download abgeschlossen!</p>
+        <button type="button" id="openFolder" class="open-folder-btn">
+          📂 Ordner öffnen
+        </button>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <a href="https://loadsh.it" target="_blank" rel="noopener">loadsh.it</a>
+      <span class="separator">•</span>
+      <a href="https://github.com/Aimtaim/loadshit-desktop" target="_blank" rel="noopener">
+        GitHub
+      </a>
+      <span class="separator">•</span>
+      <span class="legal">Open Source - MIT License</span>
+    </footer>
+  </div>
+
+  <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
