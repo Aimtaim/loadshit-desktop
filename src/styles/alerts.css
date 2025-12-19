@@ -1,0 +1,317 @@
+/* LoadSh.it Desktop - Custom Alerts (Neo-Brutalism) */
+
+/* ============================================
+   ALERT OVERLAY
+   ============================================ */
+
+.alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+}
+
+.alert-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ============================================
+   ALERT BOX
+   ============================================ */
+
+.alert-box {
+  background: var(--bg-card);
+  border: 3px solid var(--text-dark);
+  box-shadow: 6px 6px 0 var(--text-dark);
+  max-width: 360px;
+  width: 90%;
+  transform: scale(0.9) translateY(-20px);
+  transition: transform 0.2s ease;
+}
+
+.alert-overlay.visible .alert-box {
+  transform: scale(1) translateY(0);
+}
+
+/* ============================================
+   ALERT HEADER
+   ============================================ */
+
+.alert-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--bg-dark);
+  border-bottom: 2px solid var(--text-dark);
+}
+
+.alert-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.alert-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+/* Alert types */
+.alert-box.success .alert-header {
+  border-bottom-color: var(--success);
+}
+
+.alert-box.success .alert-icon {
+  color: var(--success);
+}
+
+.alert-box.error .alert-header {
+  border-bottom-color: var(--error);
+}
+
+.alert-box.error .alert-icon {
+  color: var(--error);
+}
+
+.alert-box.warning .alert-header {
+  border-bottom-color: var(--warning);
+}
+
+.alert-box.warning .alert-icon {
+  color: var(--warning);
+}
+
+.alert-box.info .alert-header {
+  border-bottom-color: var(--primary);
+}
+
+.alert-box.info .alert-icon {
+  color: var(--primary);
+}
+
+/* ============================================
+   ALERT CONTENT
+   ============================================ */
+
+.alert-content {
+  padding: 1rem;
+}
+
+.alert-message {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ============================================
+   ALERT ACTIONS
+   ============================================ */
+
+.alert-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 1rem 1rem;
+}
+
+.alert-btn {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  border: 2px solid var(--text-dark);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.alert-btn-primary {
+  background: var(--primary);
+  color: var(--text-dark);
+  box-shadow: 3px 3px 0 var(--text-dark);
+}
+
+.alert-btn-primary:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--text-dark);
+}
+
+.alert-btn-primary:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--text-dark);
+}
+
+.alert-btn-secondary {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  box-shadow: 3px 3px 0 var(--text-dark);
+}
+
+.alert-btn-secondary:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--text-dark);
+}
+
+/* ============================================
+   TOAST NOTIFICATIONS
+   ============================================ */
+
+.toast-container {
+  position: fixed;
+  top: 60px;
+  right: 1rem;
+  z-index: 99998;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.toast {
+  background: var(--bg-card);
+  border: 2px solid var(--text-dark);
+  box-shadow: 4px 4px 0 var(--text-dark);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 320px;
+  pointer-events: auto;
+  transform: translateX(120%);
+  transition: transform 0.2s ease;
+}
+
+.toast.visible {
+  transform: translateX(0);
+}
+
+.toast-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.toast-message {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-light);
+  flex: 1;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-close:hover {
+  color: var(--text-light);
+}
+
+/* Toast types */
+.toast.success {
+  border-left: 4px solid var(--success);
+}
+
+.toast.success .toast-icon {
+  color: var(--success);
+}
+
+.toast.error {
+  border-left: 4px solid var(--error);
+}
+
+.toast.error .toast-icon {
+  color: var(--error);
+}
+
+.toast.warning {
+  border-left: 4px solid var(--warning);
+}
+
+.toast.warning .toast-icon {
+  color: var(--warning);
+}
+
+.toast.info {
+  border-left: 4px solid var(--primary);
+}
+
+.toast.info .toast-icon {
+  color: var(--primary);
+}
+
+/* ============================================
+   DELETE COUNT SELECTOR (Neo-Brutalism)
+   ============================================ */
+
+.delete-count-selector {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.delete-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--bg-dark);
+  border: 2px solid var(--text-dark);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.delete-option:hover {
+  background: var(--bg-card);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--text-dark);
+}
+
+.delete-option input[type="radio"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--text-dark);
+  background: var(--bg-card);
+  cursor: pointer;
+  position: relative;
+}
+
+.delete-option input[type="radio"]:checked {
+  background: var(--warning);
+}
+
+.delete-option input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  background: var(--text-dark);
+}
+
+.delete-option-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-light);
+}

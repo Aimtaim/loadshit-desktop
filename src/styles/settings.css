@@ -1,0 +1,693 @@
+/* LoadSh.it Desktop - Settings Page Styles */
+
+/* ============================================
+   SETTINGS MODAL
+   ============================================ */
+
+.settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.settings-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.settings-modal {
+  width: 90%;
+  max-width: 550px;
+  max-height: 85vh;
+  background: var(--bg-card);
+  border: 4px solid var(--primary);
+  box-shadow: 8px 8px 0 var(--primary);
+  display: flex;
+  flex-direction: column;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.settings-overlay.visible .settings-modal {
+  transform: translateY(0);
+}
+
+/* ============================================
+   SETTINGS HEADER
+   ============================================ */
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 3px solid var(--border-light);
+  background: var(--bg-dark);
+}
+
+.settings-header h2 {
+  font-size: 1.25rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.close-settings-btn {
+  background: transparent;
+  border: 2px solid var(--text-muted);
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-settings-btn:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* ============================================
+   SETTINGS CONTENT
+   ============================================ */
+
+.settings-content {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ============================================
+   SETTINGS SECTIONS
+   ============================================ */
+
+.settings-section {
+  margin-bottom: 2rem;
+}
+
+.settings-section:last-child {
+  margin-bottom: 0;
+}
+
+.settings-section h3 {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Section header with toggle */
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.section-header-row h3 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* ============================================
+   MODE TOGGLE (Light/Dark)
+   ============================================ */
+
+.mode-toggle {
+  display: flex;
+  gap: 0;
+  border: 2px solid var(--border-light);
+  background: var(--bg-dark);
+}
+
+.mode-btn {
+  width: 36px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.mode-btn:hover {
+  color: var(--text-light);
+  background: var(--bg-card);
+}
+
+.mode-btn.active {
+  background: var(--primary);
+  color: var(--text-dark);
+}
+
+.mode-btn:first-child {
+  border-right: 2px solid var(--border-light);
+}
+
+/* ============================================
+   THEME GRID
+   ============================================ */
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.theme-card {
+  background: var(--bg-dark);
+  border: 3px solid var(--border-light);
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.theme-card:hover {
+  border-color: var(--text-muted);
+  transform: translateY(-2px);
+}
+
+.theme-card.active {
+  border-color: var(--primary);
+  box-shadow: 4px 4px 0 var(--primary);
+}
+
+.theme-color-swatch {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border-light);
+  margin: 0 auto 0.5rem;
+}
+
+.theme-card.active .theme-color-swatch {
+  border-color: var(--text-light);
+  box-shadow: 0 0 8px currentColor;
+}
+
+.theme-card .theme-name {
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.theme-card .theme-desc {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   SETTING ROWS
+   ============================================ */
+
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.setting-row:last-child {
+  border-bottom: none;
+}
+
+.setting-info {
+  flex: 1;
+}
+
+.setting-label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.setting-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   TOGGLE SWITCH
+   ============================================ */
+
+.toggle-switch {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-dark);
+  border: 2px solid var(--border-light);
+  transition: 0.3s;
+}
+
+.toggle-slider::before {
+  position: absolute;
+  content: '';
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: var(--text-muted);
+  transition: 0.3s;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(24px);
+  background: var(--text-dark);
+}
+
+/* ============================================
+   SLIDER INPUT
+   ============================================ */
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 150px;
+}
+
+.slider-input {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  background: var(--bg-dark);
+  border: 2px solid var(--border-light);
+  outline: none;
+  cursor: pointer;
+}
+
+.slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--primary);
+  border: 2px solid var(--text-dark);
+  cursor: pointer;
+}
+
+.slider-input::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: var(--primary);
+  border: 2px solid var(--text-dark);
+  cursor: pointer;
+}
+
+.slider-value {
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  min-width: 45px;
+  text-align: right;
+  color: var(--primary);
+}
+
+/* ============================================
+   COLOR PICKER
+   ============================================ */
+
+.color-picker-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.color-picker {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-color);
+  cursor: pointer;
+  padding: 0;
+  background: transparent;
+}
+
+.color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.color-picker::-webkit-color-swatch {
+  border: none;
+}
+
+.color-value {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.reset-color-btn {
+  background: transparent;
+  border: 2px solid var(--text-muted);
+  color: var(--text-muted);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reset-color-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* ============================================
+   FILE INPUT (Background Image)
+   ============================================ */
+
+/* Folder picker for download path */
+.folder-picker-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.folder-picker-wrapper .clear-bg-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: var(--text-muted);
+  color: var(--text-muted);
+}
+
+.folder-picker-wrapper .clear-bg-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: transparent;
+}
+
+.download-path {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+}
+
+.file-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.file-input-btn {
+  background: var(--bg-dark);
+  border: 3px solid var(--border-light);
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.file-input-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.file-input-btn.has-image {
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.clear-bg-btn {
+  background: transparent;
+  border: 2px solid var(--danger);
+  color: var(--danger);
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: none;
+}
+
+.clear-bg-btn.visible {
+  display: block;
+}
+
+.clear-bg-btn:hover {
+  background: var(--danger);
+  color: var(--text-light);
+}
+
+/* Hidden file input */
+.hidden-file-input {
+  display: none;
+}
+
+/* Background preview */
+.bg-preview {
+  margin-top: 0.75rem;
+  display: none;
+}
+
+.bg-preview.visible {
+  display: block;
+}
+
+.bg-preview img {
+  width: 100%;
+  max-height: 100px;
+  object-fit: cover;
+  border: 2px solid var(--border-light);
+  opacity: 0.7;
+}
+
+/* ============================================
+   SETTINGS FOOTER
+   ============================================ */
+
+.settings-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-top: 3px solid var(--border-light);
+  background: var(--bg-dark);
+}
+
+.footer-btn {
+  background: transparent;
+  border: 2px solid var(--text-muted);
+  color: var(--text-muted);
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.footer-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.footer-btn.danger:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.version-info {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+}
+
+/* ============================================
+   SETTINGS BUTTON (Header)
+   ============================================ */
+
+.settings-btn {
+  background: transparent;
+  border: 2px solid var(--text-muted);
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: rotate(30deg);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 480px) {
+  .settings-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .settings-content {
+    padding: 1rem;
+  }
+
+  .theme-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .setting-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .slider-container {
+    width: 100%;
+  }
+
+  .settings-footer {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .version-info {
+    text-align: center;
+  }
+}
+
+/* ============================================
+   CONVERTER HINT
+   ============================================ */
+
+.converter-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-dark);
+  border-left: 3px solid var(--primary);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.converter-hint svg {
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+.converter-hint a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.converter-hint a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   SECTION HEADERS WITH ICONS
+   ============================================ */
+
+.settings-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.settings-section h3 svg {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   FOOTER BUTTONS WITH ICONS
+   ============================================ */
+
+.footer-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.footer-btn svg {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   FILE INPUT BUTTON WITH ICON
+   ============================================ */
+
+.file-input-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.file-input-btn svg {
+  flex-shrink: 0;
+}
+
+.clear-bg-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

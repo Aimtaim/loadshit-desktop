@@ -1,0 +1,612 @@
+/* LoadSh.it Desktop - Custom Titlebar */
+
+/* ============================================
+   APP WINDOW
+   ============================================ */
+
+.app-window {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: transparent;
+  border: 3px solid var(--primary);
+  overflow: hidden;
+  position: relative;
+}
+
+/* App window background with opacity */
+.app-window::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-dark);
+  opacity: var(--app-opacity, 1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.app-window > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   TITLEBAR
+   ============================================ */
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  min-height: 42px;
+  background: var(--bg-card);
+  border-bottom: 3px solid var(--primary);
+  padding: 0 8px;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+  app-region: drag;
+  position: relative;
+}
+
+.titlebar-center-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titlebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  pointer-events: auto;
+  transition: all 0.2s;
+  -webkit-app-region: no-drag;
+  app-region: no-drag;
+}
+
+.titlebar-link:hover {
+  color: var(--primary);
+}
+
+.titlebar-link:hover .titlebar-logo {
+  transform: scale(1.1);
+}
+
+.titlebar-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.titlebar-title {
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: var(--text-light);
+}
+
+.titlebar-right {
+  position: absolute;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  -webkit-app-region: no-drag;
+  app-region: no-drag;
+}
+
+/* ============================================
+   TITLEBAR BUTTONS
+   ============================================ */
+
+.titlebar-btn {
+  width: 32px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 2px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  -webkit-app-region: no-drag;
+  app-region: no-drag;
+}
+
+.titlebar-btn:hover {
+  color: var(--text-light);
+  border-color: var(--text-muted);
+}
+
+.titlebar-btn.dock-btn:hover {
+  color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.titlebar-btn.settings-btn:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.titlebar-btn.mediathek-btn:hover {
+  color: var(--success);
+  border-color: var(--success);
+}
+
+.titlebar-btn.minimize-btn:hover {
+  color: var(--warning);
+  border-color: var(--warning);
+}
+
+.titlebar-btn.maximize-btn:hover {
+  color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.titlebar-btn.close-btn:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.titlebar-btn svg {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   APP CONTENT
+   ============================================ */
+
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR
+   ============================================ */
+
+.app-content::-webkit-scrollbar,
+.queue-list::-webkit-scrollbar,
+.select-options::-webkit-scrollbar {
+  width: 8px;
+}
+
+.app-content::-webkit-scrollbar-track,
+.queue-list::-webkit-scrollbar-track,
+.select-options::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+  border-left: 2px solid var(--border-light);
+}
+
+.app-content::-webkit-scrollbar-thumb,
+.queue-list::-webkit-scrollbar-thumb,
+.select-options::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border: 2px solid var(--bg-dark);
+}
+
+.app-content::-webkit-scrollbar-thumb:hover,
+.queue-list::-webkit-scrollbar-thumb:hover,
+.select-options::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Firefox */
+.app-content,
+.queue-list,
+.select-options {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--bg-dark);
+}
+
+/* ============================================
+   DOCKED MODE (Edge Snap)
+   ============================================ */
+
+.app-window.docked {
+  border-width: 2px;
+}
+
+.app-window.docked .titlebar {
+  height: 36px;
+  min-height: 36px;
+  padding: 0 6px;
+}
+
+.app-window.docked .titlebar-center-logo {
+  display: flex;
+}
+
+.app-window.docked .titlebar-title {
+  font-size: 0.85rem;
+}
+
+.app-window.docked .titlebar-right {
+  gap: 2px;
+}
+
+.app-window.docked .titlebar-btn {
+  width: 28px;
+  height: 24px;
+}
+
+.app-window.docked .app-content {
+  padding: 0.75rem;
+}
+
+.app-window.docked .downloader-card {
+  padding: 0.75rem;
+  box-shadow: 4px 4px 0 var(--primary);
+}
+
+/* Hide elements in docked mode */
+.app-window.docked .video-info,
+.app-window.docked .options-row,
+.app-window.docked .app-footer,
+.app-window.docked .queue-section,
+.app-window.docked .error-section,
+.app-window.docked .platforms-bar,
+.app-window.docked .settings-btn,
+.app-window.docked .maximize-btn,
+.app-window.docked .url-preview {
+  display: none !important;
+}
+
+/* Show docked quick actions only when docked */
+.docked-quick-actions {
+  display: none;
+}
+
+.app-window.docked .docked-quick-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.docked-action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  border: 2px solid var(--border-light);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.docked-action-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.docked-action-btn.undock:hover {
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+
+/* Docked success section - compact */
+.app-window.docked .success-section {
+  display: flex !important;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.app-window.docked .success-section.hidden {
+  display: none !important;
+}
+
+.app-window.docked .success-icon-wrapper {
+  padding: 0.4rem;
+}
+
+.app-window.docked .success-icon-wrapper svg {
+  width: 16px;
+  height: 16px;
+}
+
+.app-window.docked .success-content p {
+  font-size: 0.75rem;
+  margin-bottom: 0;
+}
+
+.app-window.docked .success-content span {
+  display: none;
+}
+
+.app-window.docked .success-actions {
+  gap: 0.25rem;
+}
+
+.app-window.docked .open-folder-btn {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.65rem;
+}
+
+.app-window.docked .close-success-btn {
+  width: 22px;
+  height: 22px;
+}
+
+/* Hidden state (auto-hide) */
+.app-window.docked-hidden {
+  opacity: 0.3;
+  transition: opacity 0.2s ease;
+}
+
+.app-window.docked-hidden:hover {
+  opacity: 1;
+}
+
+/* Compact URL inputs in docked mode */
+.app-window.docked .url-inputs-container {
+  max-height: 120px;
+  margin-bottom: 0.5rem;
+}
+
+.app-window.docked .input-wrapper {
+  margin-bottom: 0.5rem;
+}
+
+.app-window.docked .brutalist-input {
+  padding: 0.65rem 0.75rem;
+  padding-right: 3rem;
+  font-size: 0.8rem;
+  border-width: 3px;
+  box-shadow: 3px 3px 0 var(--text-dark);
+}
+
+.app-window.docked .paste-btn {
+  padding: 6px;
+}
+
+.app-window.docked .paste-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.app-window.docked .add-url-btn {
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 3px 3px 0 var(--text-dark);
+}
+
+.app-window.docked .brutalist-btn {
+  padding: 0.65rem 1rem;
+  font-size: 0.8rem;
+  box-shadow: 4px 4px 0 var(--text-dark);
+}
+
+/* Compact progress in docked mode */
+.app-window.docked .progress-section {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+}
+
+.app-window.docked .progress-header {
+  margin-bottom: 0.5rem;
+}
+
+.app-window.docked .status-badge {
+  font-size: 0.6rem;
+  padding: 0.2rem 0.4rem;
+}
+
+.app-window.docked .progress-percent {
+  font-size: 1rem;
+}
+
+.app-window.docked .progress-bar {
+  height: 12px;
+}
+
+.app-window.docked .progress-info {
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+}
+
+/* Dock indicator */
+.dock-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--primary);
+  color: var(--text-dark);
+  padding: 4px 8px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: none;
+  z-index: 1001;
+}
+
+.dock-indicator.left {
+  left: 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.dock-indicator.right {
+  right: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+.dock-indicator.visible {
+  display: block;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Docked edge glow */
+.app-window.docked.docked-left {
+  border-left-color: var(--secondary);
+  border-left-width: 4px;
+}
+
+.app-window.docked.docked-right {
+  border-right-color: var(--secondary);
+  border-right-width: 4px;
+}
+
+/* ============================================
+   SNAP ANIMATIONS (Neo-Brutalist Style)
+   ============================================ */
+
+/* Snapping IN animation */
+.app-window.snapping {
+  animation: snapIn 0.25s cubic-bezier(0.2, 0, 0, 1.2) forwards;
+}
+
+@keyframes snapIn {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  30% {
+    transform: scale(0.95);
+    filter: brightness(1.3);
+  }
+  60% {
+    transform: scale(1.02);
+    filter: brightness(0.9);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+/* Unsnapping OUT animation */
+.app-window.unsnapping {
+  animation: snapOut 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes snapOut {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+/* Flash effect on dock */
+.app-window.snapping::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--primary);
+  opacity: 0;
+  animation: flashIn 0.25s ease-out forwards;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes flashIn {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Border pulse on dock */
+.app-window.docked {
+  animation: borderPulse 0.4s ease-out;
+}
+
+@keyframes borderPulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--primary);
+  }
+  50% {
+    box-shadow: 0 0 0 8px var(--primary);
+  }
+  100% {
+    box-shadow: none;
+  }
+}
+
+/* Shake effect on snap */
+.app-window.snapping .downloader-card {
+  animation: brutalShake 0.15s ease-out;
+}
+
+@keyframes brutalShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+/* Glitch text effect on version badge when docking */
+.app-window.snapping .titlebar-version,
+.app-window.unsnapping .titlebar-version {
+  animation: glitchText 0.2s steps(2) forwards;
+}
+
+@keyframes glitchText {
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+  25% {
+    clip-path: inset(0 0 50% 0);
+    transform: translateX(2px);
+  }
+  50% {
+    clip-path: inset(50% 0 0 0);
+    transform: translateX(-2px);
+  }
+  75% {
+    clip-path: inset(0 50% 0 0);
+    transform: translateX(1px);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   WINDOW RESIZE HANDLES (for transparent window)
+   Using dedicated elements instead of ::before/::after
+   to avoid conflicts with background layer
+   ============================================ */
+
+/* Note: Resize handles are now handled by Tauri's native
+   window decorations. The ::before is used for background. */

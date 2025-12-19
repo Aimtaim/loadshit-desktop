@@ -1,7 +1,7 @@
 {
   "name": "loadshit-desktop",
-  "version": "1.0.0",
-  "description": "Free & Open Source Video Downloader",
+  "version": "2.0.0",
+  "description": "Free & Open Source Video Downloader with Themes & Queue",
   "type": "module",
   "scripts": {
     "dev": "tauri dev",
@@ -9,7 +9,10 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "@tauri-apps/api": "^2.0.0"
+    "@tauri-apps/api": "^2.0.0",
+    "@tauri-apps/plugin-clipboard-manager": "^2.0.0",
+    "@tauri-apps/plugin-notification": "^2.0.0",
+    "@tauri-apps/plugin-shell": "^2.0.0"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.0.0"
@@ -19,5 +22,13 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Aimtaim/loadshit-desktop"
-  }
+  },
+  "keywords": [
+    "video-downloader",
+    "youtube",
+    "tiktok",
+    "yt-dlp",
+    "tauri",
+    "desktop-app"
+  ]
 }

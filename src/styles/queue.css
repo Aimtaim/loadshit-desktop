@@ -1,0 +1,390 @@
+/* LoadSh.it Desktop - Queue & Clipboard Styles */
+
+/* ============================================
+   DOWNLOAD QUEUE SECTION
+   ============================================ */
+
+.queue-section {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: var(--bg-dark);
+  border: 3px solid var(--border-light);
+}
+
+.queue-section.hidden {
+  display: none;
+}
+
+.queue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border-light);
+}
+
+.queue-header h3 {
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.queue-count {
+  background: var(--primary);
+  color: var(--text-dark);
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  min-width: 24px;
+  text-align: center;
+}
+
+/* ============================================
+   QUEUE LIST
+   ============================================ */
+
+.queue-list {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.queue-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.queue-list::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+.queue-list::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+}
+
+.queue-list::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* ============================================
+   QUEUE ITEM
+   ============================================ */
+
+.queue-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--bg-card);
+  border: 2px solid var(--border-light);
+  margin-bottom: 0.5rem;
+  transition: all 0.2s;
+}
+
+.queue-item:last-child {
+  margin-bottom: 0;
+}
+
+.queue-item:hover {
+  border-color: var(--text-muted);
+}
+
+.queue-item.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.3);
+}
+
+.queue-item.completed {
+  opacity: 0.6;
+  border-color: var(--success);
+}
+
+.queue-item.failed {
+  border-color: var(--danger);
+}
+
+.queue-item-thumbnail {
+  width: 60px;
+  height: 34px;
+  object-fit: cover;
+  background: var(--bg-dark);
+  border: 1px solid var(--border-light);
+  flex-shrink: 0;
+}
+
+.queue-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.queue-item-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.25rem;
+}
+
+.queue-item-meta {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.queue-item-status {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.15rem 0.4rem;
+  background: var(--warning);
+  color: var(--text-dark);
+}
+
+.queue-item-status.downloading {
+  background: var(--secondary);
+}
+
+.queue-item-status.completed {
+  background: var(--success);
+}
+
+.queue-item-status.failed {
+  background: var(--danger);
+  color: var(--text-light);
+}
+
+.queue-item-status.pending {
+  background: var(--text-muted);
+  color: var(--text-dark);
+}
+
+.queue-item-remove {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+
+.queue-item-remove:hover {
+  color: var(--danger);
+}
+
+/* ============================================
+   QUEUE ITEM PROGRESS
+   ============================================ */
+
+.queue-item-progress {
+  height: 4px;
+  background: var(--bg-dark);
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.queue-item-progress-fill {
+  height: 100%;
+  background: var(--primary);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+/* ============================================
+   QUEUE ACTIONS
+   ============================================ */
+
+.queue-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 2px solid var(--border-light);
+}
+
+.queue-btn {
+  background: transparent;
+  border: 2px solid var(--text-muted);
+  color: var(--text-muted);
+  padding: 0.4rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.queue-btn:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* ============================================
+   CLIPBOARD MONITOR INDICATOR
+   ============================================ */
+
+.clipboard-indicator {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--bg-card);
+  border: 3px solid var(--primary);
+  box-shadow: 4px 4px 0 var(--primary);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 999;
+  transition: transform 0.3s ease;
+}
+
+.clipboard-indicator.visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+.clipboard-indicator.hidden {
+  transform: translateX(-50%) translateY(100px);
+}
+
+.clipboard-icon {
+  font-size: 1.25rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.clipboard-text {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.clipboard-url {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.clipboard-add-btn {
+  background: var(--primary);
+  border: 2px solid var(--text-dark);
+  color: var(--text-dark);
+  padding: 0.4rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clipboard-add-btn:hover {
+  background: var(--primary-dark);
+  transform: scale(1.05);
+}
+
+.clipboard-dismiss {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  margin-left: 0.25rem;
+}
+
+.clipboard-dismiss:hover {
+  color: var(--text-light);
+}
+
+/* ============================================
+   HEADER ACTIONS
+   ============================================ */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ============================================
+   ADD TO QUEUE BUTTON
+   ============================================ */
+
+.add-queue-btn {
+  background: transparent;
+  border: 2px solid var(--text-muted);
+  color: var(--text-muted);
+  padding: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-left: 0.5rem;
+}
+
+.add-queue-btn:hover {
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+
+.add-queue-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   EMPTY QUEUE STATE
+   ============================================ */
+
+.queue-empty {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--text-muted);
+}
+
+.queue-empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.5;
+}
+
+.queue-empty-text {
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 480px) {
+  .clipboard-indicator {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    transform: translateX(0) translateY(100px);
+  }
+
+  .clipboard-indicator.visible {
+    transform: translateX(0) translateY(0);
+  }
+
+  .queue-item {
+    flex-wrap: wrap;
+  }
+
+  .queue-item-thumbnail {
+    width: 50px;
+    height: 28px;
+  }
+}

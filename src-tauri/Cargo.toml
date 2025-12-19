@@ -1,6 +1,6 @@
 [package]
 name = "loadshit-desktop"
-version = "1.0.0"
+version = "2.0.0"
 edition = "2021"
 description = "Free & Open Source Video Downloader"
 authors = ["LoadSh.it Team"]
@@ -8,13 +8,20 @@ license = "MIT"
 repository = "https://github.com/Aimtaim/loadshit-desktop"
 
 [dependencies]
-tauri = { version = "2", features = [] }
+tauri = { version = "2", features = ["tray-icon"] }
 tauri-plugin-shell = "2"
+tauri-plugin-clipboard-manager = "2"
+tauri-plugin-notification = "2"
+tauri-plugin-dialog = "2"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 tokio = { version = "1", features = ["full", "process"] }
 uuid = { version = "1", features = ["v4"] }
 dirs = "5"
+window-vibrancy = "0.5"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+cocoa = "0.26"
 
 [build-dependencies]
 tauri-build = { version = "2", features = [] }

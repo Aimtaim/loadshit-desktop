@@ -1,0 +1,930 @@
+/* LoadSh.it Desktop - Theme System */
+
+/* ============================================
+   BASE THEME VARIABLES (Default: Neon)
+   ============================================ */
+
+:root {
+  /* Primary Colors */
+  --primary: #00ff88;
+  --primary-dark: #00cc6a;
+  --primary-rgb: 0, 255, 136;
+
+  /* Secondary */
+  --secondary: #1ac2ff;
+  --secondary-rgb: 26, 194, 255;
+
+  /* Backgrounds */
+  --bg-dark: #0a0a0a;
+  --bg-card: #1e1e1e;
+  --bg-card-rgb: 30, 30, 30;
+  --bg-input: #ffffff;
+
+  /* Text */
+  --text-light: #ffffff;
+  --text-muted: #888888;
+  --text-dark: #000000;
+
+  /* Borders */
+  --border-color: #000000;
+  --border-light: #333333;
+
+  /* Status Colors */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #a855f7;
+
+  /* Shadows */
+  --shadow-color: var(--primary);
+  --shadow-offset: 8px;
+
+  /* App Opacity */
+  --app-opacity: 1;
+
+  /* Background Image */
+  --bg-image: none;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* ============================================
+   THEME: NEON (Default)
+   ============================================ */
+
+[data-theme="neon"] {
+  --primary: #00ff88;
+  --primary-dark: #00cc6a;
+  --primary-rgb: 0, 255, 136;
+  --secondary: #1ac2ff;
+  --bg-dark: #0a0a0a;
+  --bg-card: #1e1e1e;
+  --shadow-color: var(--primary);
+}
+
+/* ============================================
+   THEME: CYBER BLUE
+   ============================================ */
+
+[data-theme="cyber"] {
+  --primary: #00d4ff;
+  --primary-dark: #00a8cc;
+  --primary-rgb: 0, 212, 255;
+  --secondary: #ff00ff;
+  --bg-dark: #0d1117;
+  --bg-card: #161b22;
+  --bg-card-rgb: 22, 27, 34;
+  --shadow-color: var(--primary);
+}
+
+/* ============================================
+   THEME: SUNSET
+   ============================================ */
+
+[data-theme="sunset"] {
+  --primary: #ff6b6b;
+  --primary-dark: #ee5a5a;
+  --primary-rgb: 255, 107, 107;
+  --secondary: #feca57;
+  --bg-dark: #1a1a2e;
+  --bg-card: #16213e;
+  --bg-card-rgb: 22, 33, 62;
+  --shadow-color: var(--primary);
+}
+
+/* ============================================
+   THEME: MINIMAL DARK
+   ============================================ */
+
+[data-theme="minimal"] {
+  --primary: #ffffff;
+  --primary-dark: #e0e0e0;
+  --primary-rgb: 255, 255, 255;
+  --secondary: #888888;
+  --bg-dark: #121212;
+  --bg-card: #1e1e1e;
+  --bg-card-rgb: 30, 30, 30;
+  --border-color: #333333;
+  --shadow-color: #333333;
+  --shadow-offset: 4px;
+}
+
+[data-theme="minimal"] .brutalist-select {
+  background: #333333;
+  color: #ffffff;
+}
+
+[data-theme="minimal"] .brutalist-select:hover {
+  background: #444444;
+}
+
+/* ============================================
+   THEME: HACKER GREEN
+   ============================================ */
+
+[data-theme="hacker"] {
+  --primary: #39ff14;
+  --primary-dark: #32e512;
+  --primary-rgb: 57, 255, 20;
+  --secondary: #00ff00;
+  --bg-dark: #000000;
+  --bg-card: #0a0a0a;
+  --bg-card-rgb: 10, 10, 10;
+  --text-light: #39ff14;
+  --text-muted: #1a8f0a;
+  --shadow-color: var(--primary);
+}
+
+[data-theme="hacker"] .brutalist-input {
+  background: #000000;
+  color: #39ff14;
+  border-color: #39ff14;
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="hacker"] .brutalist-input::placeholder {
+  color: #1a8f0a;
+}
+
+/* ============================================
+   THEME: PURPLE DREAM
+   ============================================ */
+
+[data-theme="purple"] {
+  --primary: #a855f7;
+  --primary-dark: #9333ea;
+  --primary-rgb: 168, 85, 247;
+  --secondary: #ec4899;
+  --bg-dark: #0f0a1a;
+  --bg-card: #1a1025;
+  --bg-card-rgb: 26, 16, 37;
+  --shadow-color: var(--primary);
+}
+
+/* ============================================
+   THEME: OCEAN
+   ============================================ */
+
+[data-theme="ocean"] {
+  --primary: #06b6d4;
+  --primary-dark: #0891b2;
+  --primary-rgb: 6, 182, 212;
+  --secondary: #22d3ee;
+  --bg-dark: #042f2e;
+  --bg-card: #064e4a;
+  --bg-card-rgb: 6, 78, 74;
+  --shadow-color: var(--primary);
+}
+
+/* ============================================
+   THEME: ROSE
+   ============================================ */
+
+[data-theme="rose"] {
+  --primary: #f43f5e;
+  --primary-dark: #e11d48;
+  --primary-rgb: 244, 63, 94;
+  --secondary: #fb7185;
+  --bg-dark: #1a0a0e;
+  --bg-card: #2d1219;
+  --bg-card-rgb: 45, 18, 25;
+  --shadow-color: var(--primary);
+}
+
+/* ============================================
+   THEME: GOLD
+   ============================================ */
+
+[data-theme="gold"] {
+  --primary: #fbbf24;
+  --primary-dark: #f59e0b;
+  --primary-rgb: 251, 191, 36;
+  --secondary: #fcd34d;
+  --bg-dark: #1a1408;
+  --bg-card: #2d2410;
+  --bg-card-rgb: 45, 36, 16;
+  --shadow-color: var(--primary);
+}
+
+/* ============================================
+   THEME: LIME
+   ============================================ */
+
+[data-theme="lime"] {
+  --primary: #84cc16;
+  --primary-dark: #65a30d;
+  --primary-rgb: 132, 204, 22;
+  --secondary: #a3e635;
+  --bg-dark: #0a1a04;
+  --bg-card: #142d0a;
+  --bg-card-rgb: 20, 45, 10;
+  --shadow-color: var(--primary);
+}
+
+/* ============================================
+   THEME: BLOOD
+   ============================================ */
+
+[data-theme="blood"] {
+  --primary: #dc2626;
+  --primary-dark: #b91c1c;
+  --primary-rgb: 220, 38, 38;
+  --secondary: #ef4444;
+  --bg-dark: #0a0404;
+  --bg-card: #1a0808;
+  --bg-card-rgb: 26, 8, 8;
+  --shadow-color: var(--primary);
+}
+
+/* ============================================
+   THEME: ICE
+   ============================================ */
+
+[data-theme="ice"] {
+  --primary: #67e8f9;
+  --primary-dark: #22d3ee;
+  --primary-rgb: 103, 232, 249;
+  --secondary: #a5f3fc;
+  --bg-dark: #0a1a1e;
+  --bg-card: #0f2830;
+  --bg-card-rgb: 15, 40, 48;
+  --shadow-color: var(--primary);
+}
+
+/* ============================================
+   APP OPACITY STYLES
+   Pseudo-elements ONLY when transparency < 100%
+   This prevents rendering glitches at full opacity
+   ============================================ */
+
+.app-window {
+  --bg-opacity: var(--app-opacity, 1);
+}
+
+/* ============================================
+   TRANSPARENCY MODE (opacity < 100%)
+   Only use pseudo-elements when actually needed
+   ============================================ */
+
+[data-transparency="true"] .downloader-card {
+  position: relative;
+  background: transparent !important;
+}
+
+[data-transparency="true"] .downloader-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-card);
+  opacity: var(--bg-opacity);
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-transparency="true"] .titlebar {
+  position: relative;
+  background: transparent !important;
+}
+
+[data-transparency="true"] .titlebar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-card);
+  opacity: var(--bg-opacity);
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-transparency="true"] .platforms-bar {
+  position: relative;
+  background: transparent !important;
+}
+
+[data-transparency="true"] .platforms-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-dark);
+  opacity: var(--bg-opacity);
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-transparency="true"] .video-preview {
+  position: relative;
+  background: transparent !important;
+}
+
+[data-transparency="true"] .video-preview::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-dark);
+  opacity: var(--bg-opacity);
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-transparency="true"] .progress-section {
+  position: relative;
+  background: transparent !important;
+}
+
+[data-transparency="true"] .progress-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-dark);
+  opacity: var(--bg-opacity);
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-transparency="true"] .success-section {
+  position: relative;
+  background: transparent !important;
+}
+
+[data-transparency="true"] .success-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-dark);
+  opacity: var(--bg-opacity);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ============================================
+   BACKGROUND IMAGE STYLES
+   ============================================ */
+
+[data-has-bg="true"] body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--bg-image);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2;
+  pointer-events: none;
+}
+
+[data-has-bg="true"] body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-has-bg="true"] body {
+  background: transparent;
+}
+
+/* Background image - app-window pseudo-element transparent */
+[data-has-bg="true"] .app-window::before {
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
+/* Background image with transparency enabled */
+[data-has-bg="true"][data-transparency="true"] .app-window::before {
+  opacity: calc(var(--app-opacity, 1) * 0.9);
+}
+
+[data-has-bg="true"][data-transparency="true"] .downloader-card::before {
+  opacity: calc(var(--app-opacity, 1) * 0.95);
+}
+
+[data-has-bg="true"][data-transparency="true"] .titlebar::before {
+  opacity: calc(var(--app-opacity, 1) * 0.95);
+}
+
+[data-has-bg="true"][data-transparency="true"] .platforms-bar::before {
+  opacity: calc(var(--app-opacity, 1) * 0.95);
+}
+
+[data-has-bg="true"][data-transparency="true"] .video-preview::before {
+  opacity: calc(var(--app-opacity, 1) * 0.95);
+}
+
+/* ============================================
+   LIGHT MODE
+   ============================================ */
+
+[data-mode="light"] {
+  --bg-dark: #f5f5f5;
+  --bg-card: #ffffff;
+  --bg-card-rgb: 255, 255, 255;
+  --bg-input: #ffffff;
+  --text-light: #1a1a1a;
+  --text-muted: #555555;
+  --text-dark: #000000;
+  --border-color: #000000;
+  --border-light: #d0d0d0;
+}
+
+[data-mode="light"] body {
+  background: #f0f0f0 !important;
+}
+
+/* Light mode - normale Hintergründe (ohne Transparenz) */
+[data-mode="light"] .app-window {
+  background: #f0f0f0 !important;
+  border-color: var(--primary);
+}
+
+[data-mode="light"] .titlebar {
+  background: #ffffff !important;
+}
+
+[data-mode="light"] .app-content {
+  background: #f0f0f0 !important;
+}
+
+[data-mode="light"] .downloader-card {
+  background: #ffffff !important;
+}
+
+[data-mode="light"] .platforms-bar {
+  background: #ffffff !important;
+}
+
+[data-mode="light"] .video-preview {
+  background: #f8f8f8 !important;
+}
+
+[data-mode="light"] .progress-section {
+  background: #f5f5f5 !important;
+}
+
+[data-mode="light"] .inline-progress {
+  background: #f5f5f5 !important;
+  border-color: var(--primary);
+  box-shadow: 4px 4px 0 var(--primary);
+}
+
+[data-mode="light"] .inline-progress-bar {
+  background: #ffffff;
+  border-color: #000000;
+}
+
+[data-mode="light"] .inline-status {
+  border-color: #000000;
+}
+
+[data-mode="light"] .inline-percent {
+  color: var(--primary);
+}
+
+[data-mode="light"] .inline-progress-info {
+  color: #555555;
+}
+
+[data-mode="light"] .success-section {
+  background: #f0fff4 !important;
+}
+
+/* Light mode MIT Hintergrundbild - gleich wie Dark Mode */
+/* Nur der Overlay ist anders (heller statt dunkler) */
+[data-mode="light"][data-has-bg="true"] body::after {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Light mode MIT Transparenz - Elemente müssen transparent sein */
+/* Gleiche Struktur wie Dark Mode mit position: relative für ::before */
+[data-mode="light"][data-transparency="true"] .titlebar {
+  position: relative;
+  background: transparent !important;
+}
+
+[data-mode="light"][data-transparency="true"] .downloader-card {
+  position: relative;
+  background: transparent !important;
+}
+
+[data-mode="light"][data-transparency="true"] .platforms-bar {
+  position: relative;
+  background: transparent !important;
+}
+
+[data-mode="light"][data-transparency="true"] .video-preview {
+  position: relative;
+  background: transparent !important;
+}
+
+[data-mode="light"][data-transparency="true"] .progress-section {
+  position: relative;
+  background: transparent !important;
+}
+
+[data-mode="light"][data-transparency="true"] .success-section {
+  position: relative;
+  background: transparent !important;
+}
+
+/* Light mode MIT Transparenz - Pseudo-Elemente mit hellen Farben */
+/* Komplette Regeln wie im Dark Mode */
+[data-mode="light"][data-transparency="true"] .app-window::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #f0f0f0 !important;
+  opacity: var(--app-opacity, 1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+[data-mode="light"][data-transparency="true"] .titlebar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #ffffff !important;
+  opacity: var(--bg-opacity);
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-mode="light"][data-transparency="true"] .downloader-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #ffffff !important;
+  opacity: var(--bg-opacity);
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-mode="light"][data-transparency="true"] .platforms-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #ffffff !important;
+  opacity: var(--bg-opacity);
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-mode="light"][data-transparency="true"] .video-preview::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #f8f8f8 !important;
+  opacity: var(--bg-opacity);
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-mode="light"][data-transparency="true"] .progress-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #f5f5f5 !important;
+  opacity: var(--bg-opacity);
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-mode="light"][data-transparency="true"] .success-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #f0fff4 !important;
+  opacity: var(--bg-opacity);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Light mode specific element adjustments */
+[data-mode="light"] .brutalist-input {
+  background: #ffffff;
+  color: #1a1a1a;
+  border-color: #1a1a1a;
+}
+
+[data-mode="light"] .brutalist-input::placeholder {
+  color: #888888;
+}
+
+[data-mode="light"] .paste-btn {
+  background: var(--primary);
+  color: #000000;
+  border-color: #000000;
+}
+
+[data-mode="light"] .brutalist-btn {
+  background: var(--primary);
+  color: #000000;
+}
+
+[data-mode="light"] .titlebar {
+  border-bottom-color: var(--primary);
+}
+
+[data-mode="light"] .titlebar-title {
+  color: #1a1a1a;
+}
+
+[data-mode="light"] .titlebar-btn {
+  color: #555555;
+}
+
+[data-mode="light"] .titlebar-btn:hover {
+  color: #1a1a1a;
+  border-color: #1a1a1a;
+}
+
+[data-mode="light"] .app-footer {
+  color: #666666;
+}
+
+[data-mode="light"] .app-footer a {
+  color: var(--primary-dark);
+}
+
+[data-mode="light"] .footer-version {
+  color: #888888;
+}
+
+[data-mode="light"] .settings-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+[data-mode="light"] .settings-modal {
+  background: #ffffff;
+}
+
+[data-mode="light"] .settings-header {
+  background: #f5f5f5;
+  border-bottom-color: #e0e0e0;
+}
+
+[data-mode="light"] .settings-header h2 {
+  color: #1a1a1a;
+}
+
+[data-mode="light"] .settings-section h3 {
+  color: var(--primary-dark);
+  border-bottom-color: #e0e0e0;
+}
+
+[data-mode="light"] .theme-card {
+  background: #f8f8f8;
+  border-color: #d0d0d0;
+}
+
+[data-mode="light"] .theme-card:hover {
+  border-color: #999999;
+}
+
+[data-mode="light"] .theme-name {
+  color: #1a1a1a;
+}
+
+[data-mode="light"] .theme-desc {
+  color: #666666;
+}
+
+[data-mode="light"] .setting-label {
+  color: #1a1a1a;
+}
+
+[data-mode="light"] .setting-desc {
+  color: #666666;
+}
+
+[data-mode="light"] .mode-toggle {
+  background: #f5f5f5;
+  border-color: #d0d0d0;
+}
+
+[data-mode="light"] .mode-btn {
+  color: #666666;
+}
+
+[data-mode="light"] .mode-btn:hover {
+  background: #e8e8e8;
+  color: #1a1a1a;
+}
+
+[data-mode="light"] .mode-btn:first-child {
+  border-right-color: #d0d0d0;
+}
+
+[data-mode="light"] .progress-section {
+  border-color: var(--primary);
+}
+
+[data-mode="light"] .progress-header {
+  color: #1a1a1a;
+}
+
+[data-mode="light"] .progress-percent {
+  color: var(--primary-dark);
+}
+
+[data-mode="light"] .progress-info {
+  color: #666666;
+}
+
+[data-mode="light"] .video-preview {
+  border-color: var(--primary);
+}
+
+[data-mode="light"] .video-title {
+  color: #1a1a1a;
+}
+
+[data-mode="light"] .video-channel {
+  color: #666666;
+}
+
+[data-mode="light"] .video-duration {
+  background: #f0f0f0;
+  color: var(--primary-dark);
+  border-color: #d0d0d0;
+}
+
+[data-mode="light"] .quality-label {
+  color: #666666;
+}
+
+[data-mode="light"] .quality-btn {
+  background: #f5f5f5;
+  color: #1a1a1a;
+  border-color: #d0d0d0;
+}
+
+[data-mode="light"] .quality-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+[data-mode="light"] .quality-btn.selected {
+  background: var(--primary);
+  color: #000000;
+  border-color: #000000;
+}
+
+[data-mode="light"] .video-preview-close {
+  background: #f0f0f0;
+  border-color: #d0d0d0;
+  color: #666666;
+}
+
+[data-mode="light"] .platform-icon {
+  background: #ffffff;
+  border-color: #d0d0d0;
+  color: #555555;
+}
+
+[data-mode="light"] .platform-icon:hover {
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+[data-mode="light"] .platform-icon.more {
+  background: var(--primary);
+  color: #000000;
+}
+
+[data-mode="light"] .toast {
+  background: #ffffff;
+  color: #1a1a1a;
+  border-color: #d0d0d0;
+}
+
+[data-mode="light"] .toast-message {
+  color: #1a1a1a;
+}
+
+[data-mode="light"] .alert-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+[data-mode="light"] .alert-box {
+  background: #ffffff;
+}
+
+[data-mode="light"] .alert-header {
+  background: #f5f5f5;
+}
+
+[data-mode="light"] .alert-title {
+  color: #1a1a1a;
+}
+
+[data-mode="light"] .alert-message {
+  color: #555555;
+}
+
+[data-mode="light"] .alert-btn-secondary {
+  background: #f0f0f0;
+  color: #1a1a1a;
+}
+
+[data-mode="light"] .success-section {
+  border-color: var(--success);
+}
+
+[data-mode="light"] .success-content p {
+  color: #1a1a1a;
+}
+
+[data-mode="light"] .success-content span {
+  color: #666666;
+}
+
+[data-mode="light"] .queue-section {
+  background: #f5f5f5 !important;
+  border-color: #d0d0d0;
+}
+
+[data-mode="light"] .queue-header {
+  background: #f0f0f0;
+}
+
+[data-mode="light"] .queue-header h3 {
+  color: #1a1a1a;
+}
+
+[data-mode="light"] .queue-item {
+  background: #ffffff !important;
+  border-color: #e0e0e0;
+}
+
+[data-mode="light"] .queue-item-title {
+  color: #1a1a1a;
+}
+
+[data-mode="light"] .queue-item-meta {
+  color: #666666;
+}
+
+/* Light mode - Mini Widget */
+[data-mode="light"] .mini-widget {
+  background: #f0f0f0 !important;
+  border-color: var(--primary);
+}
+
+[data-mode="light"] .mini-widget-header {
+  background: #ffffff !important;
+}
+
+[data-mode="light"] .mini-widget-content {
+  background: #f0f0f0 !important;
+}
+
+[data-mode="light"] .mini-widget-input {
+  background: #ffffff !important;
+  color: #1a1a1a;
+}
+
+/* Light mode scrollbar */
+[data-mode="light"] .app-content::-webkit-scrollbar-track,
+[data-mode="light"] .queue-list::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-left-color: #e0e0e0;
+}
+
+[data-mode="light"] .app-content::-webkit-scrollbar-thumb,
+[data-mode="light"] .queue-list::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-color: #f0f0f0;
+}
+
+/* ============================================
+   CUSTOM ACCENT COLOR
+   ============================================ */
+
+[data-custom-accent] {
+  --primary: var(--custom-accent);
+  --primary-dark: var(--custom-accent-dark);
+  --shadow-color: var(--custom-accent);
+}
+
+/* ============================================
+   THEME TRANSITION ANIMATIONS
+   Only for theme changes, not during scroll
+   ============================================ */
+
+.brutalist-btn,
+.status-badge {
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
